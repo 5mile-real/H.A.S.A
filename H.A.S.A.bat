@@ -30,9 +30,9 @@ echo                 ; ,''-,;' ``-
 echo                  ``-..__``--`
 echo.
 echo Loading...
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 cd ..
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 WHERE "nmap"
 IF ERRORLEVEL 1 set nmap=error
 WHERE "git"
@@ -187,7 +187,7 @@ set criminal=Unknown
 cls
 echo Dox tool, ver 1.0. by ChaoS_LoveR
 echo loading...
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 cls
 echo Entry name?
 set /p "entryname=Input: "
@@ -209,7 +209,7 @@ set /p "cvv=CVV: "
 set /p "creditcard=Credit card: "
 set /p "criminal=Crimes: "
 echo Gathering info...
-PING localhost -n 2 >NUL
+timeout /t 2 /nobreak >NUL
 echo Creating %entryname%.txt...
 echo First name: %first% >> %entryname%.txt
 echo Middle name: %second% >> %entryname%.txt
@@ -228,9 +228,9 @@ echo Expiration date: %expiration% >> %entryname%.txt
 echo CVV: %cvv% >> %entryname%.txt
 echo Credit card: %creditcard% >> %entryname%.txt
 echo Criminal records: %criminal% >> %entryname%.txt
-PING localhost -n 2 >NUL
+timeout /t 2 /nobreak >NUL
 echo Done!
-PING localhost -n 3 >NUL
+timeout /t 2 /nobreak >NUL
 set rsp=entry recorded
 goto start
 
@@ -402,16 +402,16 @@ goto start
 color 4
 cls
 echo You do not have kali installed
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 color f
 set rsp=Kali not installed as local path
 goto start
 
 :fix
 echo scanning tasks...
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 echo killing tasks...
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 taskkill /f /fi "status eq not responding"
 set rsp=Non responding tasks killed
 goto start
@@ -429,7 +429,7 @@ if %errorlevel% == 0 goto continue
 color 4
 cls
 echo You need admin privileges to run this.
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 goto start
 :continue
 cls
@@ -442,15 +442,15 @@ pause
 cls
 echo Finding default gateway...
 for /f "tokens=1-2 delims=:" %%a in ('ipconfig^|find "Default"') do set ip=%%b
-PING localhost -n 2 >NUL
+timeout /t 3 /nobreak >NUL
 echo Found: %ip%
 echo Finding mac address...
 for /f "tokens=2 delims= " %%a in ('arp -a^|find "%ip% "') do set mac=%%a
 echo Found: %mac%
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 cls
 echo To stop this process, type "CTL + C" or close window
-PING localhost -n 4 >NUL
+timeout /t 4 /nobreak >NUL
 cls
 :monitoring
 cls
@@ -501,7 +501,7 @@ echo print ("Login success")>> tmpemail.py
 echo server.sendmail(sender_email, rec_email, message)>> tmpemail.py
 echo print("Email has been sent to ", rec_email)>> tmpemail.py
 python tmpemail.py
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 del /f tmpemail.py
 set rsp=Email sent
 goto start
@@ -509,17 +509,17 @@ goto start
 :kill
 echo Installing "Kickthemout" by Nikolaos Kamarinakis and David Schutz
 echo Installing...
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 git clone https://github.com/k4m4/kickthemout.git
 cd kickthemout
 pip3 install -r requirements.txt
 echo Finding default gateway...
 for /f "tokens=1-2 delims=:" %%a in ('ipconfig^|find "Default"') do set ip=%%b
-PING localhost -n 2 >NUL
+timeout /t 2 /nobreak >NUL
 cls
 echo When prompted to enter default gateway, type: %ip%.
 echo When given options, press "3"
-PING localhost -n 5 >NUL
+timeout /t 5 /nobreak >NUL
 python kickthemout.py
 set rsp=Kick them out opened
 cd ..
@@ -533,7 +533,7 @@ echo Installing IP geolocator, by Maldevel.
 echo https://github.com/maldevel/IPGeoLocation
 echo.
 echo Installing...
-PING localhost -n 3 >NUL
+timeout /t 3 /nobreak >NUL
 git clone https://github.com/maldevel/IPGeoLocation.git
 cd IPGeoLocation
 pip3 install -r requirements.txt
